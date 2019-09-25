@@ -9,6 +9,9 @@
   template:
     src: chrony.conf.j2
     dest: "{{ chrony_config_location }}"
+    mode: "0644"
+    owner: root
+    group: root
   notify:
     - restart chrony
 

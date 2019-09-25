@@ -10,18 +10,21 @@ lint:
 platforms:
   - name: centos7
     image: "unxnn/docker-centos7-ansible:latest"
+    override_command: false
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
     privileged: true
     pre_build_image: true
   - name: debian9
     image: "unxnn/docker-debian9-ansible:latest"
+    override_command: false
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
     privileged: true
     pre_build_image: true
   - name: ubuntu1804
     image: "unxnn/docker-ubuntu1804-ansible:latest"
+    override_command: false
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
     privileged: true
@@ -31,7 +34,7 @@ provisioner:
   lint:
     name: ansible-lint
   playbooks:
-    converge: ${MOLECULE_PLAYBOOK:-playbook.yml}
+    converge: playbook.yml
 scenario:
   name: default
 verifier:
